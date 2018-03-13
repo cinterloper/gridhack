@@ -5,6 +5,7 @@ then
 else
   echo "COULD NOT LOAD gridhack.lua"
 fi
+read
 getKey() {
   read -rsn1 k
 }
