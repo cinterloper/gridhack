@@ -3,7 +3,6 @@
 --Public Domain
 
 debug = false
-getch = {}
 position = { 1, 1 }
 boardstate = {}
 field = {}
@@ -12,12 +11,7 @@ local function isempty(s)
     return s == nil or s == ''
 end
 
---_X = true
---_Y = false
---function bv(var)
---    -- convert a bool to an integer value
---    return var and 1 or 0
---end
+
 function l_initBoard()
     for x = 1, 10, 1
     do
@@ -62,14 +56,7 @@ function findAdjacent(X, Y)
     end
     dbg("returning ajacent mines:" .. ajacent_mines)
     return ajacent_mines
-    --find the -1 and +1
-    --on the x axis
-    --then the y axis
-    --find the 4 combinations of x+1,y+1, x-1,y-1,...
 
-
-    --as long as we have checked there is no current mine
-    -- we just count the mines in the 3x3 square (or shaved on a side...)
 end
 
 function drawBoard(board)
@@ -115,12 +102,6 @@ function moveUp()
     end
 end
 
---function boundsCheck(axis, step)
---    if boardstate[position[axis]] then
---    end
---
---end
-
 function updateGame(drawBoardRes, readInputRes)
 
 
@@ -144,7 +125,6 @@ function updateGame(drawBoardRes, readInputRes)
         else
             boardstate[position[2]][position[1]] = findAdjacent(position[2], position[1])
         end
-        --boardstate[position[2]][position[1]] = field[position[2]][position[1]]
 
         drawBoard(boardstate)
     end
@@ -165,8 +145,7 @@ function updateGame(drawBoardRes, readInputRes)
     end
     bash.setVariable('X', position[2] - 1 )
     bash.setVariable('Y', position[1] - 1)
-    -- dont need this with cursor but still
-    -- print(readInputRes)
+
 end
 function getMineThreshold()
     mine_generation_threshold = bash.getVariable("MINE_THRESHOLD")
@@ -185,11 +164,5 @@ function l_game()
     return true
 end
 
-function l_got_k()
-    print(bash.getVariable('k'))
-end
-
-
 bash.register("l_initBoard")
-bash.register("l_got_k")
 bash.register("l_game")
