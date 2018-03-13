@@ -115,11 +115,11 @@ function moveUp()
     end
 end
 
-function boundsCheck(axis, step)
-    if boardstate[position[axis]] then
-    end
-
-end
+--function boundsCheck(axis, step)
+--    if boardstate[position[axis]] then
+--    end
+--
+--end
 
 function updateGame(drawBoardRes, readInputRes)
 
